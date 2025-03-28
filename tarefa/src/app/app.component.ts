@@ -7,17 +7,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   appTitle = 'Gerenciador de Tarefas';
-  novaTarefa = '';
-  tarefas: { nome: string, concluida: boolean }[] = [];
+  novaTarefa = ''; 
+  tarefas: { nome: string; concluida: boolean }[] = []; 
+  mostrarLista = true;
 
-  adicionarTarefa() {
+  
+  adicionarTarefa(): void {
     if (this.novaTarefa.trim()) {
-      this.tarefas.push({ nome: this.novaTarefa, concluida: false });
-      this.novaTarefa = '';
+      this.tarefas.push({ nome: this.novaTarefa, concluida: false }); 
+      this.novaTarefa = '';  
     }
   }
 
-  marcarComoConcluida(tarefa: any) {
-    tarefa.concluida = !tarefa.concluida;
+  
+  marcarComoConcluida(tarefa: { nome: string; concluida: boolean }): void {
+    tarefa.concluida = true;
+  }
+
+  
+  toggleLista(): void {
+    this.mostrarLista = !this.mostrarLista;
   }
 }
